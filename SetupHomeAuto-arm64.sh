@@ -29,7 +29,7 @@ OPENHAB_SERVICE_NAME=openhab
 OPENHAB_SERVICE_DESCRIPTION="OpenHAB Home Automation"
 OPENHAB_SERVICE_USER=openhab
 OPENHAB_PORTS=(8080)
-OPENHAB_VOLUME_NAMES=("/opt/openhab" "openhab-conf:/opt/openhab/conf" "openhab-userdata:/opt/openhab/userdata" "openhab-addons:/opt/openhab/addons" "openhab-java:/opt/openhab/.java" "/etc/timezone:/etc/timezone:ro" "/etc/localtime:/etc/localtime:ro")
+OPENHAB_VOLUME_NAMES=("/opt/openhab" "openhab-conf:/openhab/conf" "openhab-userdata:/openhab/userdata" "openhab-addons:/openhab/addons" "openhab-java:/openhab/.java" "/etc/timezone:/etc/timezone:ro" "/etc/localtime:/etc/localtime:ro")
 OPENHAB_VOLUME_PATHS=("/opt/openhab" "/opt/openhab/conf" "/opt/openhab/userdata" "/opt/openhab/addons" "/opt/openhab/.java")
 OPENHAB_ENVIRONMENT_VARIABLES=("CRYPTO_POLICY=unlimited")
 OPENHAB_DEVICES=(/dev/zwave)
@@ -54,7 +54,7 @@ SEPIA_STT_PORTS=(20741)
 SEPIA_STT_VOLUME_NAMES=("/etc/timezone:/etc/timezone:ro" "/etc/localtime:/etc/localtime:ro")
 SEPIA_STT_VOLUME_PATHS=()
 SEPIA_STT_ENVIRONMENT_VARIABLES=()
-SEPIA_STT_DEVICES=("/dev/zwave")
+SEPIA_STT_DEVICES=()
 
 # Mosquitto config
 MOSQUITTO_IMAGE="eclipse-mosquitto:latest"
@@ -76,7 +76,7 @@ ZIGBEE2MQTT_PORTS=(8008)
 ZIGBEE2MQTT_VOLUME_NAMES=("/opt/zigbee2mqtt" "zigbee2mqtt-app-data:/app/data" "/run/udev:/run/udev:ro")
 ZIGBEE2MQTT_VOLUME_PATHS=("/opt/zigbee2mqtt" "/opt/zigbee2mqtt/data")
 ZIGBEE2MQTT_ENVIRONMENT_VARIABLES=()
-ZIGBEE2MQTT_DEVICES=("/dev/zigbee:/dev/ttyACM0")
+ZIGBEE2MQTT_DEVICES=()
 
 # Other variables
 NC='\033[0m' # No Color
