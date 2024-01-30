@@ -78,7 +78,7 @@ configureation is required in this file (not described in this document).
       baudrate: 115200
       rtscts: false
 
-Notice how the port is set to the same [`code`](</dev/target_container_device>) mentioned above in the service script.
+Notice how the port is set to the same [`</dev/target_container_device>`] mentioned above in the service script.
 
 # Process for setting Mosquitto MQTT broker
 
