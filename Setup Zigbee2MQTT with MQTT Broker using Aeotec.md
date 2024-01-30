@@ -27,16 +27,16 @@ Setup the configuration script like so:
     [Install]
     WantedBy=multi-user.target
 
-Pay special attention to the --device switch.  Specify the zigbee serial device to be passed through in the format of [`code`](--device=/dev/<source_host_device>:/dev/<target_container_device>).
+Pay special attention to the --device switch.  Specify the zigbee serial device to be passed through in the format of `--device=/dev/<source_host_device>:/dev/<target_container_device>`.
 It is best to configure an alias for ease of readablility in the UDEV rules.  An example file (/etc/udev/rules.d/99-usb-serial.rules) would look like this:
 
     SUBSYSTEM=="tty", ATTRS{idVendor}=="1cf1", ATTRS{idProduct}=="0030", ATTRS{serial}=="DE2469919", SYMLINK+="zigbee"
     SUBSYSTEM=="tty", ATTRS{idVendor}=="0658", ATTRS{idProduct}=="0200", SYMLINK+="zwave"
     SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="7523", SYMLINK+="zigbee2"
 
-In the example UDEV rules file above, /dev/zigbee2 is being assigned to the device with a Vendor ID of 1a86 and a Product ID of 7523.  Those should be the Vendor and Product IDs of the Aeotec Zi-Stick, but always check with lsusb.  lsusb can be used with the -v switch to reveal the idVendor and idProduct values to put in the attribute fields above.  This will basically create a symlink for /dev/zigbee2 to point to the associated device in the OS.  Additionally, make note of the target container device that is referencing the source host device in the [`code`](--device=/dev/<source_host_device>:/dev/<target_container_device>) switch in the service script.  This is required for the configuration.yaml file described below.
+In the example UDEV rules file above, /dev/zigbee2 is being assigned to the device with a Vendor ID of 1a86 and a Product ID of 7523.  Those should be the Vendor and Product IDs of the Aeotec Zi-Stick, but always check with lsusb.  lsusb can be used with the -v switch to reveal the idVendor and idProduct values to put in the attribute fields above.  This will basically create a symlink for /dev/zigbee2 to point to the associated device in the OS.  Additionally, make note of the target container device that is referencing the source host device in the `--device=/dev/<source_host_device>`:/dev/<target_container_device>) switch in the service script.  This is required for the configuration.yaml file described below.
 
-Also pay special attention to the volume for [`code`](/app/data).  In the example above the volume zigbe2mqtt-app-data was created in docker ahead of time.  This will FAIL to create the configuration.yaml file on initial run due to the fact that when a container is run, precreated volumes are repermissioned to only allow root to access them.  Thus, zigbee2mqtt will not start.  Instead, hard wire the path of the volume into the [`code`](-v switch) on your service.  Make it look like this:
+Also pay special attention to the volume for `/app/data`.  In the example above the volume zigbe2mqtt-app-data was created in docker ahead of time.  This will FAIL to create the configuration.yaml file on initial run due to the fact that when a container is run, precreated volumes are repermissioned to only allow root to access them.  Thus, zigbee2mqtt will not start.  Instead, hard wire the path of the volume into the `-v` switch on your service.  Make it look like this:
 
 Change the service to look like this for the initial configuration
 
@@ -78,7 +78,7 @@ configureation is required in this file (not described in this document).
       baudrate: 115200
       rtscts: false
 
-Notice how the port is set to the same [`</dev/target_container_device>`] mentioned above in the service script.
+Notice how the port is set to the same `</dev/target_container_device>` mentioned above in the service script.
 
 # Process for setting Mosquitto MQTT broker
 
