@@ -1,4 +1,4 @@
-# Process to setup Zigbee2MQTT with Aeotec Zi-Stick:
+# Process to setup Zigbee2MQTT with Aeotec Zi-Stick
 
 Buy the Zi-Stick first.
 
